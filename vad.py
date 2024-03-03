@@ -35,7 +35,6 @@ def start_recording():
     while True:
     
         audio_chunk = stream.read(num_samples)
-    
         # in case you want to save the audio later
         data.append(audio_chunk)
     
@@ -47,7 +46,7 @@ def start_recording():
         new_confidence = model(torch.from_numpy(audio_float32), 16000).item()
         voiced_confidences.append(new_confidence)
 
-        print(new_confidence > 0.7)
+        print(new_confidence)
 
 if __name__ == "__main__":
     FORMAT = pyaudio.paInt16
