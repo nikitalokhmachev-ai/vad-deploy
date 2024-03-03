@@ -9,9 +9,9 @@ format = audiofile.split('.')[-1]
 
 if __name__ == "__main__":
     model = torch.jit.load("silero_vad.jit")
-    wav = read_audio(audiofile, sampling_rate=sampling_rate)
+    data = read_audio(audiofile, sampling_rate=sampling_rate)
     song = AudioSegment.from_mp3(audiofile) 
-    speech_timestamps = get_speech_timestamps(wav, model, sampling_rate=sampling_rate, return_seconds=True)
+    speech_timestamps = get_speech_timestamps(data, model, sampling_rate=sampling_rate, return_seconds=True)
 
     songs = []
     for el in speech_timestamps:
